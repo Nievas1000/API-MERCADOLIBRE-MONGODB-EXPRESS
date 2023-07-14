@@ -29,7 +29,8 @@ exports.createUser = async (req, res) => {
 };
 
 exports.getUser = async (req, res) => {
-  const { username, password } = req.body;
+  console.log(req.query);
+  const { username, password } = req.query;
   if (username && password) {
     const user = await User.findOne({
       $or: [{ username: username }, { email: username }],
