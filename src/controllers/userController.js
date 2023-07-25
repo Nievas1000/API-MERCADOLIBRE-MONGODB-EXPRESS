@@ -29,7 +29,6 @@ exports.createUser = async (req, res) => {
 };
 
 exports.getUser = async (req, res) => {
-  console.log(req.query);
   const { username, password } = req.query;
   if (username && password) {
     const user = await User.findOne({
@@ -46,7 +45,6 @@ exports.getUser = async (req, res) => {
       res
         .status(404)
         .json({ error: "There is no user with that username or email." });
-      mongoose.connection.close();
     }
   } else {
     res.status(404).json({ message: "Missing fields." });
